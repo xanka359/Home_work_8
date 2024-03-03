@@ -1,13 +1,13 @@
-from selene import browser, by, have, command, be
+from selene import have
 
 from home_work.pages.registration_page import RegistrationPage
-from home_work.resources import resource_path
+
 
 def test_registration_form():
     registration_page = RegistrationPage()
     registration_page.open()
 
-    #WHEN
+    # WHEN
     registration_page.type_first_name("NewFirst name")
     registration_page.type_last_name("NewLast name")
     registration_page.type_email('example@mail.com')
@@ -26,21 +26,19 @@ def test_registration_form():
 
     registration_page.submit()
 
-
-
-    #THEN
+    # THEN
     registration_page.modal_registration_text('Thanks for submitting the form')
-    registration_page.should_registrated_user_contains().should(  #можно у класса написать @property и средние скобки не писать
-                    have.texts(
-                    'NewFirst name NewLast name',
-                    'example@mail.com',
-                    'Female',
-                    '1023456789',
-                    '18 June,1995',
-                    'English',
-                    'Sports',
-                    'photo_1.jpg',
-                    'Russian Federation, Penza',
-                    'NCR Noida',)
+    registration_page.should_registrated_user_contains().should(
+        have.texts(
+            'NewFirst name NewLast name',
+            'example@mail.com',
+            'Female',
+            '1023456789',
+            '18 June,1995',
+            'English',
+            'Sports',
+            'photo_1.jpg',
+            'Russian Federation, Penza',
+            'NCR Noida', )
     )
     registration_page.close_modal_win()
