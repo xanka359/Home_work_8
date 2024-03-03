@@ -12,7 +12,7 @@ def test_registrated_user():
     registration_page = HighLevelRegistrationPage()
 
     registration_page.open()
-    #THEN
+    # WHEN
     registration_page.type_first_name(user.first_name)
     registration_page.type_last_name(user.last_name)
 
@@ -31,7 +31,7 @@ def test_registrated_user():
     registration_page.fill_city(user.city)
 
     registration_page.submit()
-    #WHEN
+    # THEN
     registration_page.modal_registration_text('Thanks for submitting the form')
     registration_page.should_registrated_user_contains(f'{user.first_name} {user.last_name}', user.email,
                                                        user.gender, f'{user.phone_number}',
