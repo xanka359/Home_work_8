@@ -18,7 +18,7 @@ def test_registration_form():
     registration_page.select_subject('English')
     registration_page.select_hobby('Sports')
 
-    browser.element('#uploadPicture').set_value(resource_path('photo_1.jpg'))
+    browser.element('#uploadPicture').set_value(resource_path('resources/photo_1.jpg'))
 
     registration_page.type_current_address('Russian Federation, Penza')
     registration_page.fill_state('NCR')

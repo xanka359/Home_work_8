@@ -1,6 +1,6 @@
 from pathlib import Path
-
 import tests
+from tests import resources
 
 
 def resource_path(file_name):
