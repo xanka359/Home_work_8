@@ -1,14 +1,21 @@
 from selene import browser, by, be, have, command
 
+from home_work.resources import resource_path
+
 
 class RegistrationPage:
     def __init__(self):
         self.last_name = browser.element('#lastName')
         self.first_name = browser.element('#firstName')
+        self.email = browser.element('#userEmail')
+        self.gender = browser.element('[value="Female"]')
+        self.p_number = browser.element('#userNumber')
+        self.current_address = browser.element('#currentAddress')
+        self.city = browser.element('#city')
         self.state = browser.element('#state')
 
 
-    def open(selfself):
+    def open(self):
         browser.open('/')
 
     def type_first_name(self, f_name):
@@ -32,14 +39,14 @@ class RegistrationPage:
         browser.element('#react-select-3-option-0').should(have.text(state)).click()
 
     def type_email(self, email):
-        browser.element('#userEmail').should(be.blank).type(email)
+        self.email.should(be.blank).type(email)
 
     def select_gender(self):
-        browser.element('[value="Female"]').perform(command.js.click)
+        self.gender.perform(command.js.click)
         return self
 
     def type_phone_number(self, ph_number):
-        browser.element('#userNumber').should(be.blank).type(ph_number)
+        self.p_number.should(be.blank).type(ph_number)
 
     def select_subject(self, subject):
         browser.element('#subjectsInput').type(subject).press_enter()
@@ -47,11 +54,15 @@ class RegistrationPage:
     def select_hobby(self, hobby):
         browser.element('[for=hobbies-checkbox-1]').click().should(have.text(hobby))
 
+    def upload_picture(self, path):
+        browser.element('#uploadPicture').set_value(resource_path(path))
+        return self
+
     def type_current_address(self, address):
-        browser.element('#currentAddress').should(be.blank).type(address)
+        self.current_address.should(be.blank).type(address)
 
     def fill_city(self, city):
-        browser.element('#city').element('.css-1wy0on6').click()
+        self.city.element('.css-1wy0on6').click()
         browser.element('#react-select-4-option-2').should(have.text(city)).click()
 
     def submit(self):
