@@ -8,7 +8,7 @@ from demo_qa.users import user, user_interests
 class StudentRegistrationForm:
 
     def open(self):
-        browser.open('/')
+        browser.open('https://demoqa.com/automation-practice-form')
         return self
 
     def type_first_name(self, user):
