@@ -1,5 +1,6 @@
 from selene import be, command, have, by
 from selene.support.shared import browser
+from selenium.webdriver.common.keys import Keys
 
 from demo_qa.resources import resource_path
 from demo_qa.users import user, user_interests
@@ -56,6 +57,8 @@ class StudentRegistrationForm:
         return self
 
     def fill_state(self, user):
+        browser.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+
         browser.element('#state').element('.css-19bqh2r').click()
         browser.element('#react-select-3-option-0').should(have.text(user.state)).click()
         return self

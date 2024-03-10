@@ -24,6 +24,13 @@ def setup_browser(request):
     )
 
     browser.config.driver = driver
+    # Масштабирование страницы
+    browser.driver.set_window_size(1920, 1080)  # Устанавливаем размер окна браузера
+    browser.driver.set_window_position(0, 0)  # Устанавливаем позицию окна браузера на экране
+
+    # Прокрутка страницы
+    #browser.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+
     yield browser
 
     attach.add_screenshot(browser)

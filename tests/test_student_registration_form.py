@@ -7,6 +7,11 @@ from demo_qa.users import user, user_interests
 def test_registration_user():
     registration_page = StudentRegistrationForm()
 
-    registration_page.open()
-    registration_page.registration(user)
-    registration_page.modal_window_check(user, user_interests)
+    with allure.step("Открыть форму регистрации"):
+        registration_page.open()
+
+    with allure.step("Заполнить форму регистрации"):
+        registration_page.registration(user)
+
+    with allure.step("Проверить корректность данных на форме регистрации"):
+        registration_page.modal_window_check(user, user_interests)
