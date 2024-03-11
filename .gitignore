@@ -1,6 +1,6 @@
 # User-specific stuff
 # ...
-
+tests/allure-results
 # JetBrains
 .idea/
 *.iml
