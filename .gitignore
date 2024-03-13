@@ -4,6 +4,7 @@ tests/allure-results
 # JetBrains
 .idea/
 *.iml
+.env
 
 # MacOS
 .DS_Store
